@@ -1,0 +1,13 @@
+com.sohu.inputmethod.sogou
+com.sankuai.meituan
+com.ss.android.article.news
+com.ximalaya.ting.android
+com.qzone
+com.jingdong.app.mall
+ctrip.android.view
+com.sina.weibo
+com.achievo.vipshop
+com.meizu.yellowpage
+com.baidu.BaiduMap.meizu
+com.meizu.datamigration
+com.meizu.feedback

@@ -1,0 +1,16 @@
+#!/system/bin/sh
+
+L_D=`dd if=/dev/block/mmcblk0p28 bs=1 skip=517 count=1 2>/dev/null`
+L_ID=`dd if=/dev/block/mmcblk0p28 bs=1 skip=514 count=8 2>/dev/null`
+M_D=`dd if=/dev/block/mmcblk0p28 bs=1 skip=525315 count=1 2>/dev/null`
+M_ID=`dd if=/dev/block/mmcblk0p28 bs=1 skip=525312 count=8 2>/dev/null`
+
+if [ ! -z "${L_ID}" -a -z "${M_ID}" ]; then
+    echo "This is M3Note model L681, with ID-"${L_ID}
+elif [ -z "${L_ID}" -a ! -z "${M_ID}" ]; then
+    echo "This is M3Note model M681, with ID-"${M_ID}
+else
+    echo "Something wrong..."
+fi
+
+exit 0
