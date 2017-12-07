@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 ##########################################
-#  Script changing chinese ID to global  #
+#   Script changing ID for Meizu M6Note  #
 #      write by prostornet from 4pda     #
 ##########################################
 set `id`
