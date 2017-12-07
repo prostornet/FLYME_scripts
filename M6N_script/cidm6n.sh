@@ -82,7 +82,10 @@ else
     exit 0
 fi
 
+# This line delete script from the system
 #rm -f $0
-#reboot
+
+# This line reboot the system to enable modification
+reboot
 
 exit 0
