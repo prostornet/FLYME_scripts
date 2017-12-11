@@ -18,8 +18,8 @@ else
     exit 0
 fi
 
-ID=`dd if=/dev/block/mmcblk0p50 bs=1 skip=512 count=8 >/dev/null 2>&1`
-if [  ${ID} -eq '72151002' ]; then
+ID=`dd if=/dev/block/mmcblk0p50 bs=1 skip=512 count=8 2>/dev/null`
+if [  "${ID}" = "72151002" ]; then
     echo "."
     echo ". Device with global [ID] - "${ID}
     echo ". Do you want to change it to chinese [ID]? (y/n)"
@@ -47,7 +47,7 @@ if [  ${ID} -eq '72151002' ]; then
         echo "."
         exit 0
     fi
-elif [ ${ID} -eq '72101001' ]; then
+elif [ "${ID}" = "72101001" ]; then
     echo "."
     echo ". Device with chinese [ID] - "${ID}
     echo ". Do you want to change it to global [ID]? (y/n)"
@@ -83,7 +83,7 @@ else
 fi
 
 # This line delete script from the system
-#rm -f $0
+rm -f $0
 
 # This line reboot the system to enable modification
 reboot
