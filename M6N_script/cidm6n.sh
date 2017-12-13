@@ -41,6 +41,8 @@ if [  "${ID}" = "72151002" ]; then
     elif [ "${ANS}" = "n" ]; then
         echo ". We aren't going change [ID]."
         echo "."
+        # This line delete script from the system
+        rm -f $0
         exit 0
     else
         echo ". You have selected the wrong letter."
@@ -69,6 +71,8 @@ elif [ "${ID}" = "72101001" ]; then
     elif [ "${ANS}" = "n" ]; then
         echo ". We aren't going change [ID]."
         echo "."
+        # This line delete script from the system
+        rm -f $0
         exit 0
     else
         echo ". You have selected the wrong letter."
