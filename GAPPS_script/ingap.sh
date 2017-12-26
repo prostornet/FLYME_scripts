@@ -6,7 +6,7 @@
 
 PATH1=/storage/emulated/0/gfiles/
 PATH2=/data/local/tmp/gfiles/
-PATH3=/system/TST/
+PATH3=/system/
 
 FIND=/system/bin/find
 CHMOD=/system/bin/chmod
