@@ -4,7 +4,7 @@
 ########################
 #
 #----- array with packages to be delete -----
-apps_del=( com.sohu.inputmethod.sogou com.sankuai.meituan com.ss.android.article.news com.ximalaya.ting.android com.qzone com.jingdong.app.mall com.meizu.datamigration ctrip.android.view com.sina.weibo com.achievo.vipshop com.flyme.meizu.store com.baidu.BaiduMap.meizu com.meizu.datamigration )
+apps_del=( com.sohu.inputmethod.sogou com.sankuai.meituan com.ss.android.article.news com.ximalaya.ting.android com.qzone com.jingdong.app.mall com.meizu.datamigration ctrip.android.view com.sina.weibo com.achievo.vipshop com.flyme.meizu.store com.baidu.BaiduMap.meizu com.meizu.datamigration com.meizu.media.ebook com.meizu.media.reader com.meizu.flyme.mall com.meizu.mcare )
 #----- array with packages to be freeze -----
 apps_freeze=( com.meizu.account.pay com.iflytek.speechsuite com.meizu.net.map com.meizu.flyme.wallet com.meizu.gamecenter.service com.svox.pico com.meizu.voiceassistant com.meizu.setup com.meizu.flyme.gamecenter com.meizu.media.life )
 #----- array with system packages to be delete -----
@@ -36,11 +36,11 @@ echo " "
 echo "[2.] Deleting chinese apps ..."
 for ad in "${apps_del[@]}"
 do
-    cmd package list packages | grep $ad 
+    cmd package list packages | grep $ad >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo "!!.d.!! App $ad is already deleted ..."
     else
-        pm uninstall $ad
+        pm uninstall $ad >/dev/null 2>&1
         echo "!!.d.!! Deleting app $ad ..."
     fi
 done
@@ -52,11 +52,11 @@ echo " "
 echo "[3.] Feezing chinese apps ..."
 for af in "${apps_freeze[@]}"
 do
-    cmd package list packages -e | grep $af
+    cmd package list packages -e | grep $af >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo "!!.f.!! App $af is already freezed..."
     else
-        pm disable $af
+        pm disable $af >/dev/null 2>&1
         echo "!!.f.!! Freezing app $af ..."
     fi
 done
@@ -69,7 +69,7 @@ echo "[4.] Deleting system apps ..."
 for ads in "${apps_del_sys[@]}"
 do
     if [ -d $ads ]; then
-        rm -rf $ads
+        rm -rf $ads >/dev/null 2>&1
         echo "!!.d.!! Deleting system app $ads"
     fi
 done
@@ -93,14 +93,8 @@ else
 fi
 
 #----- Change permissions for folders & files -----
-for F in `${FIND} ${PATH1} -type f`
-do
-    ${CHMOD} 644 ${F}
-done
-for D in `${FIND} ${PATH1} -type d`
-do
-    ${CHMOD} 755 ${D}
-done
+find $PATH1 -type f -exec chmod 644 {} \;
+find $PATH1 -type d -exec chmod 755 {} \;
 
 #----- Copy folders & files -----
 for n in `ls -1 /data/local/tmp/files/`
